@@ -1,7 +1,7 @@
 package mx.com.gm.HolaMundoSpringData.web;
 
 import lombok.var;
-import mx.com.gm.HolaMundoSpringData.dao.IPersonDao;
+import mx.com.gm.HolaMundoSpringData.services.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BeginController {
 
     @Autowired
-    IPersonDao iPersonDao;
+    IPersonService iPersonService;
 
     @GetMapping("/")
     public String start(Model model) {
 
-        var people = iPersonDao.findAll();
+        var people = iPersonService.ListPeople();
 
         model.addAttribute("people", people);
         return "index";
